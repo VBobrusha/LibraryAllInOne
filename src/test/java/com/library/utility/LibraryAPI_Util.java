@@ -39,7 +39,8 @@ public class LibraryAPI_Util {
                 when()
                 .post(ConfigurationReader.getProperty("library.baseUri")+"/login")
                 .prettyPeek()
-                .path("token") ;
+                .then().statusCode(200)
+                .extract().jsonPath().getString("token");
 
 
     }
